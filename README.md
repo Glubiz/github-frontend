@@ -2,6 +2,12 @@
 
 This document provides instructions on how to run and build the Vite app, as well as the overall design of the application.
 
+## Pre-requisites
+
+To run the app, you will need to install the following software:
+
+- [Node.js](https://nodejs.org/en/)
+
 ## Running the App
 
 To run the app in development mode, follow these steps:
