@@ -33,9 +33,6 @@ export const createComponents = ({ palette }: Config): Components => {
     },
     MuiCssBaseline: {
       styleOverrides: {
-        '#nprogress .bar': {
-          backgroundColor: (palette.primary as PaletteColor).main,
-        },
         '.slick-dots li button': {
           '&:before': {
             fontSize: 10,
