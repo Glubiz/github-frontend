@@ -4,7 +4,6 @@ import { filledInputClasses } from '@mui/material/FilledInput';
 import { outlinedInputClasses } from '@mui/material/OutlinedInput';
 import { paperClasses } from '@mui/material/Paper';
 import { tableCellClasses } from '@mui/material/TableCell';
-import { common } from '@mui/material/colors';
 import type { Components } from '@mui/material/styles/components';
 import type { PaletteColor, PaletteOptions } from '@mui/material/styles/createPalette';
 
@@ -14,14 +13,6 @@ interface Config {
 
 export const createComponents = ({ palette }: Config): Components => {
   return {
-    MuiAvatar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: palette.neutral![200],
-          color: common.black,
-        },
-      },
-    },
     MuiBackdrop: {
       styleOverrides: {
         root: {
@@ -37,16 +28,6 @@ export const createComponents = ({ palette }: Config): Components => {
           [`&.${paperClasses.elevation1}`]: {
             boxShadow: '0px 5px 22px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03)',
           },
-        },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        icon: {
-          color: palette.action!.active,
-        },
-        root: {
-          borderColor: palette.neutral![200],
         },
       },
     },
@@ -127,17 +108,6 @@ export const createComponents = ({ palette }: Config): Components => {
         },
       },
     },
-    MuiSwitch: {
-      styleOverrides: {
-        switchBase: {
-          color: palette.neutral![500],
-        },
-        track: {
-          backgroundColor: palette.neutral![400],
-          opacity: 1,
-        },
-      },
-    },
     MuiTableCell: {
       styleOverrides: {
         root: {
@@ -152,22 +122,6 @@ export const createComponents = ({ palette }: Config): Components => {
             backgroundColor: palette.neutral![50],
             color: palette.neutral![700],
           },
-        },
-      },
-    },
-    // @ts-ignore
-    MuiTimelineConnector: {
-      styleOverrides: {
-        root: {
-          backgroundColor: palette.divider,
-        },
-      },
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          backdropFilter: 'blur(6px)',
-          background: alpha(palette.neutral![900], 0.8),
         },
       },
     },

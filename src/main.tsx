@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Suspense } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -15,4 +15,5 @@ root.render(
       </Suspense>
     </BrowserRouter>
   </HelmetProvider>
+  
 );

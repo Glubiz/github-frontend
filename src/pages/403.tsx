@@ -1,13 +1,11 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import type { Theme } from '@mui/material/styles/createTheme';
 
 import { Seo } from 'src/components/seo';
-import { paths } from 'src/paths';
 
 const Page = () => {
   const mdUp = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));

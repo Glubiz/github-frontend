@@ -1,12 +1,9 @@
 import type { FC, ReactNode } from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
-import isEqual from 'lodash.isequal';
+import { useCallback, useEffect, useState } from 'react';
 
 import type { Settings } from 'src/types/settings';
 
-import type { State } from './settings-context';
-import { SettingsContext, initialState, defaultSettings } from './settings-context';
+import { SettingsContext, defaultSettings } from './settings-context';
 
 const STORAGE_KEY = 'app.settings';
 
@@ -50,7 +47,7 @@ interface SettingsProviderProps {
 
 export const SettingsProvider: FC<SettingsProviderProps> = (props) => {
   const { children } = props;
-  const [state, setState] = useState<State>(initialState);
+  const [state, setState] = useState<Settings>(defaultSettings);
 
   useEffect(() => {
     const restored = restoreSettings();
@@ -79,7 +76,6 @@ export const SettingsProvider: FC<SettingsProviderProps> = (props) => {
         contrast: prevState.contrast,
         direction: prevState.direction,
         layout: prevState.layout,
-        navColor: prevState.navColor,
         paletteMode: prevState.paletteMode,
         responsiveFontSizes: prevState.responsiveFontSizes,
         stretch: prevState.stretch,
@@ -93,49 +89,13 @@ export const SettingsProvider: FC<SettingsProviderProps> = (props) => {
     });
   }, []);
 
-  const handleDrawerOpen = useCallback(() => {
-    setState((prevState) => ({
-      ...prevState,
-      openDrawer: true,
-    }));
-  }, []);
-
-  const handleDrawerClose = useCallback(() => {
-    setState((prevState) => ({
-      ...prevState,
-      openDrawer: false,
-    }));
-  }, []);
-
-  const isCustom = useMemo(() => {
-    return !isEqual(defaultSettings, {
-      colorPreset: state.colorPreset,
-      contrast: state.contrast,
-      direction: state.direction,
-      layout: state.layout,
-      navColor: state.navColor,
-      paletteMode: state.paletteMode,
-      responsiveFontSizes: state.responsiveFontSizes,
-      stretch: state.stretch,
-    });
-  }, [state]);
-
   return (
     <SettingsContext.Provider
       value={{
-        ...state,
-        handleDrawerClose,
-        handleDrawerOpen,
-        handleReset,
-        handleUpdate,
-        isCustom,
+        ...state
       }}
     >
       {children}
     </SettingsContext.Provider>
   );
-};
-
-SettingsProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

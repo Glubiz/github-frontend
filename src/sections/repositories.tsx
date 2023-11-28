@@ -1,6 +1,4 @@
-import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import numeral from 'numeral';
 import ArrowRightIcon from '@untitled-ui/icons-react/build/esm/ArrowRight';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -56,8 +54,8 @@ export const Repositories = () => {
         </TableHead>
         <TableBody>
           {repositories?.map((repo) => {
-            const watchers = numeral(repo.watchers).format('0,0');
-            const forks = numeral(repo.forks).format('0,0');
+            const watchers = repo.watchers;
+            const forks = repo.forks;
 
             return (
               <TableRow
@@ -97,34 +95,6 @@ export const Repositories = () => {
               </TableRow>
             );
           })}
-          {/* {sortedVisits.map((visit) => {
-            const visits = numeral(visit.value).format('0,0');
-
-            return (
-              <TableRow
-                key={visit.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                    }}
-                  >
-                    <Typography
-                      sx={{ ml: 1 }}
-                      variant="subtitle2"
-                    >
-                      {visit.name}
-                    </Typography>
-                  </Box>
-                </TableCell>
-                <TableCell>{visits}</TableCell>
-                <TableCell>{visit.seoPercentage}%</TableCell>
-              </TableRow>
-            );
-          })} */}
         </TableBody>
       </Table>
     </Card>
